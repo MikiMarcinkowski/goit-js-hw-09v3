@@ -5,12 +5,23 @@ function getRandomHexColor() {
 const body = document.querySelector('body');
 const startBtn = document.querySelector('button[data-start]');
 const stopBtn = document.querySelector('button[data-stop]');
+let timerId = null;
 
 
-document.addEventListener('click', changeBgColor);
+startBtn.addEventListener('click', changeBgColor);
+
+// const periodChangingBgColor = () => 
 
 function changeBgColor() {
-  
+  timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
+  }, 1000);
+  startBtn.disabled = true;
+};
 
+stopBtn.addEventListener('click', stopChangingBgColor);
+
+function stopChangingBgColor() {
+  clearInterval(timerId);
+  startBtn.disabled = false;
 };
