@@ -10,7 +10,7 @@ let timerId = null;
 
 startBtn.addEventListener('click', changeBgColor);
 
-// const periodChangingBgColor = () => 
+
 
 function changeBgColor() {
   timerId = setInterval(() => {
