@@ -20,11 +20,11 @@ form.addEventListener('submit', onSubmit);
 function onSubmit(event) {
   event.preventDefault();
 
-  let { amount, delay, step } = event.target.elements;
-  
-  amount = Number.parseInt(amount.value);
-  delay = Number.parseInt(delay.value);
-  step = Number.parseInt(step.value);
+  let { amount, delay, step } = event.currentTarget.elements;
+
+  amount = Number(amount.value);
+  delay = Number (delay.value);
+  step = Number(step.value);
 
   for (let i = 1; i <= amount; i += 1) {
     // let inputDelay = delay;
