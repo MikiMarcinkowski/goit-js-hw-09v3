@@ -1,4 +1,4 @@
-1;
+
 const form = document.querySelector('.form');
 
 function createPromise(position, delay) {
