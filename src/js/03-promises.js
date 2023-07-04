@@ -1,6 +1,6 @@
 1;
 const form = document.querySelector('.form');
-// const elements = form.values.elements;
+
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -23,14 +23,17 @@ form.addEventListener('submit', onSubmit);
 function onSubmit(event) {
   event.preventDefault();
 
+  const elements = event.currentTarget.elements;
+
+
   const formData = {
-    delay: form.elements.delay.value,
-    step: form.elements.step.value,
-    amount: form.elements.amount.value,
+    delay: elements.delay.value,
+    step: elements.step.value,
+    amount: elements.amount.value,
   };
 
   for (let i = 1; i <= formData.amount; i += 1) {
-    let delay = formData.delay
+    let delay = formData.delay;
     createPromise(i, delay )
       .then(({ position, delay }) => {
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -38,6 +41,7 @@ function onSubmit(event) {
       .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    delay += formData.step;
-  }
+    // delay += formData.step;
+  };
+  event.currentTarget.reset();
 }
